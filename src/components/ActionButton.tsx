@@ -10,7 +10,7 @@ const ActionButton = () => {
 
     useEffect(() => {
         trigger();
-    }, []);
+    }, [trigger]);
 
     return (
         <Button type="submit" disabled={!!errors.address?.message || isSubmitting} variant="contained">
