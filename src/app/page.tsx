@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
 import FaucetForm from "../components/FaucetForm";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
@@ -25,6 +26,9 @@ export default function Home() {
         </Typography>
 
         <FaucetForm />
+
+        <ToastContainer position="top-right" hideProgressBar limit={6} />
+
       </Box>
     </main>
   );

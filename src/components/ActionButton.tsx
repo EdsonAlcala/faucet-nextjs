@@ -2,11 +2,13 @@ import { Button } from "@mui/material";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
+import { FormValues } from "./types";
+
 const ActionButton = () => {
     const {
         trigger,
         formState: { errors, isSubmitting },
-    } = useFormContext<{ address: string }>();
+    } = useFormContext<FormValues>();
 
     useEffect(() => {
         trigger();

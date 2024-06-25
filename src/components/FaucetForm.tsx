@@ -8,21 +8,28 @@ import { toast } from "react-toastify";
 
 import ActionButton from "./ActionButton";
 import AddressInput from "./AddressInput";
+import TransactionLink from './TransactionLink';
+
+import { FormValues } from "./types";
 
 const FaucetForm = () => {
-    const methods = useForm<{
-        address: string;
-    }>({
+    const methods = useForm<FormValues>({
         mode: "onChange",
         delayError: 200,
+        defaultValues: {
+            address: "",
+        },
     });
 
-    const onSubmit: SubmitHandler<{ address: string }> = async (data: any) => {
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
         try {
             const drip = await axios.post("api", {
                 address: data.address.toLowerCase(),
             });
-            toast.success(`Success! ${drip.data?.message ?? ""}`);
+
+            toast.success(<TransactionLink transactionHash={drip.data.result} />);
+            methods.reset({ address: "" });
+
         } catch (err) {
             toast.error(
                 // @ts-ignore

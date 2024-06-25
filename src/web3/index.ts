@@ -7,9 +7,6 @@ import { SEPOLIA_EXPLORER } from "./constants";
 export const requestTokens = async (receiver: string) => {
     console.log(`Receiver: ${receiver}`);
 
-    await sleep(5000);
-    return;
-
     // Load the NEAR account
     const { account, near } = await nearAccountFromEnv();
     console.log(`Your NEAR account ID: ${account.accountId}`);
@@ -59,6 +56,8 @@ export const requestTokens = async (receiver: string) => {
     });
 
     console.log(`Transaction Confirmed: ${SEPOLIA_EXPLORER}/tx/${hash}`);
+
+    return hash;
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

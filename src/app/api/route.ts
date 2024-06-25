@@ -14,8 +14,11 @@ export async function POST(request: Request) {
 
     try {
         const result = await requestTokens(address as string)
-        return new Response('Success!', {
+        return new Response(JSON.stringify({ message: 'Success!', result }), {
             status: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
     } catch (error) {
         return new Response('Error!', {
