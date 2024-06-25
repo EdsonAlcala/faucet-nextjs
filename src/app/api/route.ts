@@ -1,6 +1,7 @@
 import { requestTokens } from "@app/web3"
 
 export const dynamic = 'force-dynamic' // defaults to auto
+export const maxDuration = 25; // This function can run for a maximum of 5 seconds
 
 export async function POST(request: Request) {
     const info = await request.json()
